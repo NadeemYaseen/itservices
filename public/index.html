@@ -3,83 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IT Services & Products</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-    </style>
-</head>
-<body class="bg-gray-900 text-white">
-    <header class="p-6 bg-gray-800 shadow-md flex justify-between items-center">
-        <h1 class="text-2xl font-bold">My IT Services</h1>
-        <nav>
-            <ul class="flex space-x-6">
-                <li><a href="#services" class="hover:text-gray-400">Services</a></li>
-                <li><a href="#products" class="hover:text-gray-400">Products</a></li>
-                <li><a href="#contact" class="hover:text-gray-400">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <section class="h-screen flex flex-col justify-center items-center text-center px-6">
-        <h2 class="text-4xl font-bold mb-4 opacity-0">Premium IT Solutions</h2>
-        <p class="text-lg text-gray-300 max-w-xl opacity-0">Offering high-quality IT services and cutting-edge products to elevate your business.</p>
-        <a href="#services" class="mt-6 bg-blue-500 px-6 py-3 rounded-lg text-lg font-semibold hover:bg-blue-600 transition opacity-0">Explore Services</a>
-    </section>
-
-    <section id="services" class="py-16 px-6">
-        <h2 class="text-3xl font-bold text-center mb-10 opacity-0">Our Services</h2>
-        <div class="grid md:grid-cols-3 gap-6">
-            <div class="p-6 bg-gray-800 rounded-lg shadow-lg opacity-0">
-                <h3 class="text-xl font-semibold">Web Development</h3>
-                <p class="text-gray-400 mt-2">Custom websites and web applications tailored to your needs.</p>
-            </div>
-            <div class="p-6 bg-gray-800 rounded-lg shadow-lg opacity-0">
-                <h3 class="text-xl font-semibold">IT Consulting</h3>
-                <p class="text-gray-400 mt-2">Expert guidance for IT infrastructure and software solutions.</p>
-            </div>
-            <div class="p-6 bg-gray-800 rounded-lg shadow-lg opacity-0">
-                <h3 class="text-xl font-semibold">Cloud Solutions</h3>
-                <p class="text-gray-400 mt-2">Scalable cloud-based solutions to enhance productivity.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="py-16 px-6 bg-gray-800">
-        <h2 class="text-3xl font-bold text-center mb-6 opacity-0">Contact Us</h2>
-        <form class="max-w-lg mx-auto opacity-0">
-            <input type="text" placeholder="Your Name" class="w-full p-3 rounded mb-4 bg-gray-700 border-none focus:outline-none text-white">
-            <input type="email" placeholder="Your Email" class="w-full p-3 rounded mb-4 bg-gray-700 border-none focus:outline-none text-white">
-            <textarea placeholder="Your Message" class="w-full p-3 rounded mb-4 bg-gray-700 border-none focus:outline-none text-white"></textarea>
-            <button class="w-full bg-blue-500 p-3 rounded text-lg font-semibold hover:bg-blue-600 transition">Send Message</button>
-        </form>
-    </section>
-
-    <footer class="p-6 text-center text-gray-400 opacity-0">&copy; 2025 My IT Services. All Rights Reserved.</footer>
-
-    <script>
-        gsap.fromTo("h2, p, a, form, footer", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1, stagger: 0.3, ease: "power3.out" });
-        gsap.fromTo("#services div", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1, stagger: 0.3, ease: "power3.out", scrollTrigger: "#services" });
-    </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IT Services & Products</title>
+    <title>TechWallet.ai - IT Services & Solutions</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollTrigger/1.0.7/ScrollTrigger.min.js"></script>
     <style>
         body { font-family: 'Inter', sans-serif; }
+        .hero-section {
+            background: linear-gradient(to right, #0f172a, #1e293b);
+            height: 100vh;
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-white">
-    <header class="p-6 bg-gray-800 shadow-md flex justify-between items-center">
-        <h1 class="text-2xl font-bold">My IT Services</h1>
+    <header class="p-6 bg-gray-800 shadow-md flex justify-between items-center fixed top-0 left-0 w-full z-50">
+        <h1 class="text-2xl font-bold text-blue-400">TechWallet.ai</h1>
         <nav>
             <ul class="flex space-x-6">
                 <li><a href="#services" class="hover:text-gray-400">Services</a></li>
@@ -88,74 +26,55 @@
         </nav>
     </header>
 
-    <section class="h-screen flex flex-col justify-center items-center text-center px-6">
-        <h2 class="text-4xl font-bold mb-4 opacity-0">Premium IT Solutions</h2>
-        <p class="text-lg text-gray-300 max-w-xl opacity-0">Offering high-quality IT services and cutting-edge products to elevate your business.</p>
+    <section class="hero-section flex flex-col justify-center items-center text-center px-6">
+        <h2 class="text-5xl font-extrabold text-white mb-4 opacity-0">Innovative IT Solutions</h2>
+        <p class="text-lg text-gray-300 max-w-2xl opacity-0">Delivering cutting-edge IT services and digital transformation solutions for businesses worldwide.</p>
         <a href="#services" class="mt-6 bg-blue-500 px-6 py-3 rounded-lg text-lg font-semibold hover:bg-blue-600 transition opacity-0">Explore Services</a>
     </section>
 
     <section id="services" class="py-16 px-6">
-        <h2 class="text-3xl font-bold text-center mb-10 opacity-0">Our Services</h2>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="p-6 bg-gray-800 rounded-lg shadow-lg opacity-0">
-                <h3 class="text-xl font-semibold">Software Development Services</h3>
-                <ul class="text-gray-400 mt-2">
-                    <li>- Custom Software Development</li>
-                    <li>- Mobile App Development</li>
-                    <li>- Web Application Development</li>
+        <h2 class="text-4xl font-bold text-center mb-10 opacity-0">Our Services</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="p-6 bg-gray-800 rounded-xl shadow-lg transform scale-95 opacity-0">
+                <h3 class="text-2xl font-semibold text-blue-400">Software Development</h3>
+                <ul class="text-gray-400 mt-3">
+                    <li>- Custom Software & Mobile Apps</li>
+                    <li>- Web Development & SaaS Solutions</li>
                 </ul>
             </div>
-            <div class="p-6 bg-gray-800 rounded-lg shadow-lg opacity-0">
-                <h3 class="text-xl font-semibold">Cloud & Hosting Services</h3>
-                <ul class="text-gray-400 mt-2">
-                    <li>- Web & Cloud Hosting</li>
-                    <li>- Domain & Email Hosting</li>
-                    <li>- Managed Cloud Services</li>
+            <div class="p-6 bg-gray-800 rounded-xl shadow-lg transform scale-95 opacity-0">
+                <h3 class="text-2xl font-semibold text-blue-400">Cybersecurity Solutions</h3>
+                <ul class="text-gray-400 mt-3">
+                    <li>- Network Security & Pen Testing</li>
+                    <li>- Data Protection & Threat Intelligence</li>
                 </ul>
             </div>
-            <div class="p-6 bg-gray-800 rounded-lg shadow-lg opacity-0">
-                <h3 class="text-xl font-semibold">Cybersecurity Solutions</h3>
-                <ul class="text-gray-400 mt-2">
-                    <li>- Network Security</li>
-                    <li>- Penetration Testing</li>
-                    <li>- Data Protection</li>
-                </ul>
-            </div>
-            <div class="p-6 bg-gray-800 rounded-lg shadow-lg opacity-0">
-                <h3 class="text-xl font-semibold">AI & Data Solutions</h3>
-                <ul class="text-gray-400 mt-2">
-                    <li>- AI Chatbots & Virtual Assistants</li>
-                    <li>- Data Analytics & Big Data</li>
-                    <li>- Machine Learning Solutions</li>
-                </ul>
-            </div>
-            <div class="p-6 bg-gray-800 rounded-lg shadow-lg opacity-0">
-                <h3 class="text-xl font-semibold">IT Consulting & Strategy</h3>
-                <ul class="text-gray-400 mt-2">
-                    <li>- Digital Transformation Consulting</li>
-                    <li>- IT Risk Assessment</li>
-                    <li>- Technology Roadmap Development</li>
+            <div class="p-6 bg-gray-800 rounded-xl shadow-lg transform scale-95 opacity-0">
+                <h3 class="text-2xl font-semibold text-blue-400">AI & Big Data</h3>
+                <ul class="text-gray-400 mt-3">
+                    <li>- AI Chatbots & Machine Learning</li>
+                    <li>- Data Analytics & Predictive Insights</li>
                 </ul>
             </div>
         </div>
     </section>
 
     <section id="contact" class="py-16 px-6 bg-gray-800">
-        <h2 class="text-3xl font-bold text-center mb-6 opacity-0">Contact Us</h2>
+        <h2 class="text-4xl font-bold text-center mb-6 opacity-0">Get in Touch</h2>
         <form class="max-w-lg mx-auto opacity-0">
-            <input type="text" placeholder="Your Name" class="w-full p-3 rounded mb-4 bg-gray-700 border-none focus:outline-none text-white">
-            <input type="email" placeholder="Your Email" class="w-full p-3 rounded mb-4 bg-gray-700 border-none focus:outline-none text-white">
-            <textarea placeholder="Your Message" class="w-full p-3 rounded mb-4 bg-gray-700 border-none focus:outline-none text-white"></textarea>
-            <button class="w-full bg-blue-500 p-3 rounded text-lg font-semibold hover:bg-blue-600 transition">Send Message</button>
+            <input type="text" placeholder="Your Name" class="w-full p-4 rounded-lg mb-4 bg-gray-700 border-none focus:outline-none text-white">
+            <input type="email" placeholder="Your Email" class="w-full p-4 rounded-lg mb-4 bg-gray-700 border-none focus:outline-none text-white">
+            <textarea placeholder="Your Message" class="w-full p-4 rounded-lg mb-4 bg-gray-700 border-none focus:outline-none text-white"></textarea>
+            <button class="w-full bg-blue-500 p-4 rounded-lg text-lg font-semibold hover:bg-blue-600 transition">Send Message</button>
         </form>
     </section>
 
-    <footer class="p-6 text-center text-gray-400 opacity-0">&copy; 2025 My IT Services. All Rights Reserved.</footer>
+    <footer class="p-6 text-center text-gray-400 opacity-0">&copy; 2025 TechWallet.ai. All Rights Reserved.</footer>
 
     <script>
         gsap.registerPlugin(ScrollTrigger);
-        gsap.fromTo("h2, p, a, form, footer", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1, stagger: 0.3, ease: "power3.out" });
-        gsap.fromTo("#services div", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1, stagger: 0.3, ease: "power3.out", scrollTrigger: "#services" });
+        gsap.fromTo("h2, p, a, form, footer", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1.2, stagger: 0.3, ease: "power3.out" });
+        gsap.fromTo("#services div", { opacity: 0, y: 30, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 1.2, stagger: 0.3, ease: "power3.out", scrollTrigger: "#services" });
     </script>
 </body>
 </html>
