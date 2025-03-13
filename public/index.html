@@ -13,6 +13,13 @@
             background: linear-gradient(to right, #0f172a, #1e293b);
             height: 100vh;
         }
+        .typing::after {
+            content: '|';
+            animation: blink 0.7s infinite;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-white">
@@ -28,9 +35,8 @@
     </header>
 
     <section class="hero-section flex flex-col justify-center items-center text-center px-6">
-        <h2 class="text-5xl font-extrabold text-white mb-4 opacity-0">Innovative IT Solutions</h2>
-        <p class="text-lg text-gray-300 max-w-2xl opacity-0">Delivering cutting-edge IT services and digital transformation solutions for businesses worldwide.</p>
-        <a href="#services" class="mt-6 bg-gradient-to-r from-purple-500 to-blue-500 px-6 py-3 rounded-lg text-lg font-semibold text-white hover:opacity-80 transition opacity-0">Get in Touch</a>
+        <h2 id="typing-text" class="text-5xl font-extrabold text-white mb-4"></h2>
+        <a href="#contact" id="contact-btn" class="mt-6 bg-gradient-to-r from-purple-500 to-blue-500 px-6 py-3 rounded-lg text-lg font-semibold text-white hover:opacity-80 transition">Get in Touch</a>
     </section>
 
     <section id="services" class="py-16 px-6">
@@ -60,9 +66,9 @@
         </div>
     </section>
 
-    <section id="contact" class="py-16 px-6 bg-gray-800">
-        <h2 class="text-4xl font-bold text-center mb-6 opacity-0">Get in Touch</h2>
-        <form class="max-w-lg mx-auto opacity-0">
+    <section id="contact" class="py-16 px-6 bg-gray-800 hidden">
+        <h2 class="text-4xl font-bold text-center mb-6">Get in Touch</h2>
+        <form class="max-w-lg mx-auto">
             <input type="text" placeholder="Your Name" class="w-full p-4 rounded-lg mb-4 bg-gray-700 border-none focus:outline-none text-white">
             <input type="email" placeholder="Your Email" class="w-full p-4 rounded-lg mb-4 bg-gray-700 border-none focus:outline-none text-white">
             <textarea placeholder="Your Message" class="w-full p-4 rounded-lg mb-4 bg-gray-700 border-none focus:outline-none text-white"></textarea>
@@ -70,12 +76,35 @@
         </form>
     </section>
 
-    <footer class="p-6 text-center text-gray-400 opacity-0">&copy; 2025 TechWallet.ai. All Rights Reserved.</footer>
+    <footer class="p-6 text-center text-gray-400">&copy; 2025 TechWallet.ai. All Rights Reserved.</footer>
 
     <script>
         gsap.registerPlugin(ScrollTrigger);
         gsap.fromTo("h2, p, a, form, footer", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1.2, stagger: 0.3, ease: "power3.out" });
         gsap.fromTo("#services div", { opacity: 0, y: 30, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 1.2, stagger: 0.3, ease: "power3.out", scrollTrigger: "#services" });
+        
+        const textArray = ["Streamline IT Workload"];
+        let textIndex = 0;
+        let charIndex = 0;
+        function typeText() {
+            if (charIndex < textArray[textIndex].length) {
+                document.getElementById("typing-text").innerHTML = textArray[textIndex].substring(0, charIndex + 1);
+                charIndex++;
+                setTimeout(typeText, 100);
+            } else {
+                setTimeout(() => {
+                    charIndex = 0;
+                    typeText();
+                }, 2000);
+            }
+        }
+        typeText();
+        
+        document.getElementById("contact-btn").addEventListener("click", function(event) {
+            event.preventDefault();
+            document.getElementById("contact").classList.remove("hidden");
+            document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+        });
     </script>
 </body>
 </html>
