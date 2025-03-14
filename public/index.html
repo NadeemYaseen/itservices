@@ -1,312 +1,348 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Tech Wallet</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
-    <style>
-        /* Typing Effect */
-        .typing::after {
-            content: '|';
-            display: inline-block;
-            animation: blink 0.7s infinite;
-        }
-
-        @keyframes blink {
-            50% { opacity: 0; }
-        }
-
-        /* Fade-in effect */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 1s ease-out, transform 1s ease-out;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tech Wallet</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    /* Typing Effect */
+    .typing::after {
+      content: '|';
+      display: inline-block;
+      animation: blink 0.7s infinite;
+    }
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+    /* Fade-in effect */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
 <body class="bg-gray-900 text-white flex justify-center">
-    <div class="w-full max-w-7xl px-6 text-center">
-
+  <div class="w-full max-w-7xl px-6 text-center">
     <!-- Navigation Bar -->
     <nav class="flex justify-between items-center px-10 py-5 bg-gray-900">
-        <h1 class="text-xl font-bold text-purple-500">Tech Wallet</h1>
-        <ul class="flex space-x-6 text-gray-300">
-            <li><a href="#" class="hover:text-white">About</a></li>
-            <li><a href="#" class="hover:text-white">Services</a></li>
-            <li><a href="#" class="hover:text-white">Blog</a></li>
-        </ul>
-        <button class="px-4 py-2 border border-purple-500 rounded-full text-purple-400 hover:bg-purple-500 hover:text-white">Book Consultation</button>
+      <h1 class="text-xl font-bold text-purple-500">Tech Wallet</h1>
+      <ul class="flex space-x-6 text-gray-300">
+        <li><a href="#" class="hover:text-white">About</a></li>
+        <li><a href="#" class="hover:text-white">Services</a></li>
+        <li><a href="#" class="hover:text-white">Blog</a></li>
+      </ul>
+      <button class="px-4 py-2 border border-purple-500 rounded-full text-purple-400 hover:bg-purple-500 hover:text-white">Book Consultation</button>
     </nav>
 
     <!-- Hero Section -->
     <section class="text-center py-20">
-        <h2 id="typing-text" class="text-4xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 inline-block text-transparent bg-clip-text typing"></h2>
-        <div class="mt-6">
-            <!-- Get In Touch Button -->
-            <button id="getInTouchBtn" class="bg-blue-500 text-white px-4 py-2 rounded-md">Get In Touch</button>
+      <h2 id="typing-text" class="text-4xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 inline-block text-transparent bg-clip-text typing"></h2>
+      <div class="mt-6">
+        <!-- Get In Touch Button -->
+        <button id="getInTouchBtn" class="bg-blue-500 text-white px-4 py-2 rounded-md">Get In Touch</button>
 
-            <!-- Modal Overlay (Dark Background) -->
-            <div id="modalOverlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40"></div>
+        <!-- Modal Overlay (Dark Background) -->
+        <div id="modalOverlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40"></div>
 
-            <!-- Contact Form Modal -->
-            <div id="contactModal" class="fixed inset-0 flex items-center justify-center hidden z-50">
-                <div class="bg-gray-900 p-8 rounded-lg shadow-lg w-[450px] h-auto relative transform scale-0 transition-transform duration-300">
-                    <!-- Close Button -->
-                    <button id="closeModalBtn" class="absolute top-2 right-2 text-white text-2xl">&times;</button>
-                
-                    <h2 class="text-3xl font-bold text-white text-center mb-6">Contact Us</h2>
-                
-                    <label class="text-white">Name *</label>
-                    <input type="text" placeholder="Enter Name" class="w-full p-3 rounded border mb-3 bg-gray-800 text-white">
-                
-                    <label class="text-white">Email *</label>
-                    <input type="email" placeholder="Your Email Address" class="w-full p-3 rounded border mb-3 bg-gray-800 text-white">
-                
-                    <label class="text-white">Message</label>
-                    <textarea placeholder="Your message..." class="w-full p-3 rounded border mb-5 bg-gray-800 text-white"></textarea>
-                
-                    <button class="bg-blue-500 text-white px-5 py-3 rounded-md w-full">Start a Conversation</button>
-                </div>
-            </div>
+        <!-- Contact Form Modal -->
+        <div id="contactModal" class="fixed inset-0 flex items-center justify-center hidden z-50">
+          <div id="contactModalContent" class="bg-gray-900 p-8 rounded-lg shadow-lg w-[450px] h-auto relative transform scale-0 transition-transform duration-300">
+            <!-- Close Button -->
+            <button id="closeModalBtn" class="absolute top-2 right-2 text-white text-2xl">&times;</button>
+            <h2 class="text-3xl font-bold text-white text-center mb-6">Contact Us</h2>
+            <label class="text-white">Name *</label>
+            <input type="text" id="modal-name" placeholder="Enter Name" class="w-full p-3 rounded border mb-3 bg-gray-800 text-white">
+            <label class="text-white">Email *</label>
+            <input type="email" id="modal-email" placeholder="Your Email Address" class="w-full p-3 rounded border mb-3 bg-gray-800 text-white">
+            <label class="text-white">Message *</label>
+            <textarea id="modal-message" placeholder="Your message..." class="w-full p-3 rounded border mb-5 bg-gray-800 text-white"></textarea>
+            <button id="startConversationBtn" class="bg-blue-500 text-white px-5 py-3 rounded-md w-full">Start a Conversation</button>
+            <p id="modalError" class="text-red-500 text-sm font-bold mt-2 hidden">Please fill in all the fields.</p>
+          </div>
         </div>
+
+        <!-- Thank You Modal -->
+        <div id="thankYouModal" class="fixed inset-0 flex items-center justify-center hidden z-50">
+          <div id="thankYouModalContent" class="bg-gray-900 p-8 rounded-lg shadow-lg w-[450px] h-auto relative transform scale-0 transition-transform duration-300">
+            <h2 class="text-3xl font-bold text-white text-center mb-4">Thank You for Contacting!</h2>
+            <p class="text-lg text-white mb-4">We will get back to you 😊</p>
+            <button id="closeThankYouBtn" class="bg-green-500 text-white px-5 py-3 rounded-md w-full">Close</button>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Services Section -->
+    <!-- Services Section (Duplicate Content) -->
     <section class="text-center py-16">
-        <h3 class="text-xl font-semibold text-gray-300">Our</h3>
-        <h2 class="text-3xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 inline-block text-transparent bg-clip-text">Services</h2>
-        <div class="flex flex-wrap justify-center gap-8 mt-8">
-            <div class="bg-gray-800 p-6 rounded-lg w-1/4 shadow-lg fade-in">
-                <h3 class="text-lg font-bold">DataOps</h3>
-                <img src="https://placehold.co/100x100" alt="DataOps Icon" class="mx-auto mt-4">
-            </div>
-            <div class="bg-gray-800 p-6 rounded-lg w-1/4 shadow-lg fade-in">
-                <h3 class="text-lg font-bold">Smart Analytics</h3>
-                <img src="https://placehold.co/100x100" alt="Smart Analytics Icon" class="mx-auto mt-4">
-            </div>
-            <div class="bg-gray-800 p-6 rounded-lg w-1/4 shadow-lg fade-in">
-                <h3 class="text-lg font-bold">Governance & Strategy</h3>
-                <img src="https://placehold.co/100x100" alt="Governance Icon" class="mx-auto mt-4">
-            </div>
+      <h3 class="text-xl font-semibold text-gray-300">Our</h3>
+      <h2 class="text-3xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 inline-block text-transparent bg-clip-text">Services</h2>
+      <div class="flex flex-wrap justify-center gap-8 mt-8">
+        <div class="bg-gray-800 p-6 rounded-lg w-1/4 shadow-lg fade-in">
+          <h3 class="text-lg font-bold">DataOps</h3>
+          <img src="https://placehold.co/100x100" alt="DataOps Icon" class="mx-auto mt-4">
         </div>
-        <div class="flex flex-wrap justify-center gap-8 mt-8">
-            <div class="bg-gray-800 p-6 rounded-lg w-1/4 shadow-lg fade-in">
-                <h3 class="text-lg font-bold">DataOps</h3>
-                <img src="https://placehold.co/100x100" alt="DataOps Icon" class="mx-auto mt-4">
-            </div>
-            <div class="bg-gray-800 p-6 rounded-lg w-1/4 shadow-lg fade-in">
-                <h3 class="text-lg font-bold">Smart Analytics</h3>
-                <img src="https://placehold.co/100x100" alt="Smart Analytics Icon" class="mx-auto mt-4">
-            </div>
-            <div class="bg-gray-800 p-6 rounded-lg w-1/4 shadow-lg fade-in">
-                <h3 class="text-lg font-bold">Governance & Strategy</h3>
-                <img src="https://placehold.co/100x100" alt="Governance Icon" class="mx-auto mt-4">
-            </div>
+        <div class="bg-gray-800 p-6 rounded-lg w-1/4 shadow-lg fade-in">
+          <h3 class="text-lg font-bold">Smart Analytics</h3>
+          <img src="https://placehold.co/100x100" alt="Smart Analytics Icon" class="mx-auto mt-4">
         </div>
+        <div class="bg-gray-800 p-6 rounded-lg w-1/4 shadow-lg fade-in">
+          <h3 class="text-lg font-bold">Governance & Strategy</h3>
+          <img src="https://placehold.co/100x100" alt="Governance Icon" class="mx-auto mt-4">
+        </div>
+      </div>
+      <div class="flex flex-wrap justify-center gap-8 mt-8">
+        <div class="bg-gray-800 p-6 rounded-lg w-1/4 shadow-lg fade-in">
+          <h3 class="text-lg font-bold">DataOps</h3>
+          <img src="https://placehold.co/100x100" alt="DataOps Icon" class="mx-auto mt-4">
+        </div>
+        <div class="bg-gray-800 p-6 rounded-lg w-1/4 shadow-lg fade-in">
+          <h3 class="text-lg font-bold">Smart Analytics</h3>
+          <img src="https://placehold.co/100x100" alt="Smart Analytics Icon" class="mx-auto mt-4">
+        </div>
+        <div class="bg-gray-800 p-6 rounded-lg w-1/4 shadow-lg fade-in">
+          <h3 class="text-lg font-bold">Governance & Strategy</h3>
+          <img src="https://placehold.co/100x100" alt="Governance Icon" class="mx-auto mt-4">
+        </div>
+      </div>
     </section>
 
-    <!-- Why Work With Us -->
+    <!-- Why Work With Us Section (Duplicate Content) -->
     <section class="text-center py-16">
-        <h2 class="text-3xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 inline-block text-transparent bg-clip-text">Why work with Tech Wallet?</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 px-10 md:px-20 mt-8">
-            <div class="bg-gray-800 p-6 rounded-lg shadow-lg fade-in">
-                <h3 class="text-lg font-bold">Tailor-Made solutions</h3>
-                <p class="text-gray-400 mt-2">We take a personalized approach...</p>
-            </div>
-            <div class="bg-gray-800 p-6 rounded-lg shadow-lg fade-in">
-                <h3 class="text-lg font-bold">Data-Driven approach</h3>
-                <p class="text-gray-400 mt-2">Extracting meaningful insights...</p>
-            </div>
-            <div class="bg-gray-800 p-6 rounded-lg shadow-lg fade-in">
-                <h3 class="text-lg font-bold">Cutting-Edge Technology</h3>
-                <p class="text-gray-400 mt-2">Leverage state-of-the-art software...</p>
-            </div>
+      <h2 class="text-3xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 inline-block text-transparent bg-clip-text">Why work with Tech Wallet?</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 px-10 md:px-20 mt-8">
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg fade-in">
+          <h3 class="text-lg font-bold">Tailor-Made solutions</h3>
+          <p class="text-gray-400 mt-2">We take a personalized approach...</p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 px-10 md:px-20 mt-8">
-            <div class="bg-gray-800 p-6 rounded-lg shadow-lg fade-in">
-                <h3 class="text-lg font-bold">Tailor-Made solutions</h3>
-                <p class="text-gray-400 mt-2">We take a personalized approach...</p>
-            </div>
-            <div class="bg-gray-800 p-6 rounded-lg shadow-lg fade-in">
-                <h3 class="text-lg font-bold">Data-Driven approach</h3>
-                <p class="text-gray-400 mt-2">Extracting meaningful insights...</p>
-            </div>
-            <div class="bg-gray-800 p-6 rounded-lg shadow-lg fade-in">
-                <h3 class="text-lg font-bold">Cutting-Edge Technology</h3>
-                <p class="text-gray-400 mt-2">Leverage state-of-the-art software...</p>
-            </div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg fade-in">
+          <h3 class="text-lg font-bold">Data-Driven approach</h3>
+          <p class="text-gray-400 mt-2">Extracting meaningful insights...</p>
         </div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg fade-in">
+          <h3 class="text-lg font-bold">Cutting-Edge Technology</h3>
+          <p class="text-gray-400 mt-2">Leverage state-of-the-art software...</p>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 px-10 md:px-20 mt-8">
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg fade-in">
+          <h3 class="text-lg font-bold">Tailor-Made solutions</h3>
+          <p class="text-gray-400 mt-2">We take a personalized approach...</p>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg fade-in">
+          <h3 class="text-lg font-bold">Data-Driven approach</h3>
+          <p class="text-gray-400 mt-2">Extracting meaningful insights...</p>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg fade-in">
+          <h3 class="text-lg font-bold">Cutting-Edge Technology</h3>
+          <p class="text-gray-400 mt-2">Leverage state-of-the-art software...</p>
+        </div>
+      </div>
     </section>
 
+    <!-- Footer Section -->
     <footer class="bg-gray-900 text-gray-300 py-10 px-10 md:px-20">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-            
-            <!-- Left Section -->
-            <div>
-                <div class="bg-gradient-to-r from-purple-700 to-blue-700 p-4 rounded-lg">
-                    <p class="text-white">
-                        Tech Wallet specializes in delivering data-driven solutions to help organizations unlock their full potential and drive success.
-                    </p>
-                </div>
-                <!-- Social Media Icons -->
-                <div class="flex space-x-4 mt-4">
-                    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-x-twitter"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-pinterest"></i></a>
-                </div>
-            </div>
-    
-            <!-- Services Section -->
-            <div>
-                <h3 class="font-bold text-white">Our Services</h3>
-                <ul class="mt-2 space-y-1">
-                    <li><a href="#" class="hover:text-white">DataOps</a></li>
-                    <li><a href="#" class="hover:text-white">Smart Analytics</a></li>
-                    <li><a href="#" class="hover:text-white">Governance & Strategy</a></li>
-                    <li><a href="#" class="hover:text-white">Data Engineering</a></li>
-                </ul>
-            </div>
-    
-            <!-- About Section -->
-            <div>
-                <h3 class="font-bold text-white">About us</h3>
-                <ul class="mt-2 space-y-1">
-                    <li><a href="#" class="hover:text-white">Blog</a></li>
-                    <li><a href="#" class="hover:text-white">Technologies</a></li>
-                    <li><a href="#" class="hover:text-white">Careers</a></li>
-                    <li><a href="#" class="hover:text-white">Data Manifesto</a></li>
-                </ul>
-            </div>
-    
-            <!-- Subscription Section -->
-            <div>
-                <h3 class="font-bold text-white">Get the latest updates</h3>
-                <div class="mt-2">
-                    <input type="email" placeholder="Email Address" class="w-full p-2 rounded-lg bg-gray-800 text-white border-none focus:outline-none">
-                    <button class="mt-3 px-4 py-2 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full font-semibold text-white w-full">Subscribe</button>
-                </div>
-            </div>
-    
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <!-- Left Section -->
+        <div>
+          <div class="bg-gradient-to-r from-purple-700 to-blue-700 p-4 rounded-lg">
+            <p class="text-white">
+              Tech Wallet specializes in delivering data-driven solutions to help organizations unlock their full potential and drive success.
+            </p>
+          </div>
+          <!-- Social Media Icons -->
+          <div class="flex space-x-4 mt-4">
+            <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-pinterest"></i></a>
+          </div>
         </div>
-    
-        <!-- Bottom Section -->
-        <div class="border-t border-gray-700 mt-8 pt-4 text-center text-sm text-gray-500">
-            <p>©2025 Tech Wallet, All rights reserved.</p>
-            <div class="mt-2 space-x-4">
-                <a href="#" class="hover:text-white">Privacy Policy</a>
-                <span>|</span>
-                <a href="#" class="hover:text-white">Terms & Conditions</a>
-            </div>
+        <!-- Services Section -->
+        <div>
+          <h3 class="font-bold text-white">Our Services</h3>
+          <ul class="mt-2 space-y-1">
+            <li><a href="#" class="hover:text-white">DataOps</a></li>
+            <li><a href="#" class="hover:text-white">Smart Analytics</a></li>
+            <li><a href="#" class="hover:text-white">Governance & Strategy</a></li>
+            <li><a href="#" class="hover:text-white">Data Engineering</a></li>
+          </ul>
         </div>
-    </footer>    
+        <!-- About Section -->
+        <div>
+          <h3 class="font-bold text-white">About us</h3>
+          <ul class="mt-2 space-y-1">
+            <li><a href="#" class="hover:text-white">Blog</a></li>
+            <li><a href="#" class="hover:text-white">Technologies</a></li>
+            <li><a href="#" class="hover:text-white">Careers</a></li>
+            <li><a href="#" class="hover:text-white">Data Manifesto</a></li>
+          </ul>
+        </div>
+        <!-- Subscription Section -->
+        <div>
+          <h3 class="font-bold text-white">Get the latest updates</h3>
+          <div class="mt-2">
+            <input type="email" placeholder="Email Address" class="w-full p-2 rounded-lg bg-gray-800 text-white border-none focus:outline-none">
+            <button class="mt-3 px-4 py-2 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full font-semibold text-white w-full">Subscribe</button>
+          </div>
+        </div>
+      </div>
+      <!-- Bottom Section -->
+      <div class="border-t border-gray-700 mt-8 pt-4 text-center text-sm text-gray-500">
+        <p>©2025 Tech Wallet, All rights reserved.</p>
+        <div class="mt-2 space-x-4">
+          <a href="#" class="hover:text-white">Privacy Policy</a>
+          <span>|</span>
+          <a href="#" class="hover:text-white">Terms & Conditions</a>
+        </div>
+      </div>
+    </footer>
 
-    <!-- JavaScript for Typing Effect & Scroll Animation -->
+    <!-- JavaScript for Typing Effect, Scroll Animation & Modal Functionality -->
     <script>
-        // Typing Effect
-        const textArray = ["Streamline Data Modeling", "Enhance Business Intelligence", "Optimize Data Governance"];
-        let textIndex = 0;
-        let charIndex = 0;
-        const typingTextElement = document.getElementById("typing-text");
+      // Typing Effect
+      const textArray = ["Streamline Data Modeling", "Enhance Business Intelligence", "Optimize Data Governance"];
+      let textIndex = 0;
+      let charIndex = 0;
+      const typingTextElement = document.getElementById("typing-text");
 
-        function typeText() {
-            if (charIndex < textArray[textIndex].length) {
-                typingTextElement.innerHTML = textArray[textIndex].substring(0, charIndex + 1) + '<span class="typing">|</span>';
-                charIndex++;
-                setTimeout(typeText, 100);
-            } else {
-                setTimeout(() => {
-                    charIndex = 0;
-                    textIndex = (textIndex + 1) % textArray.length;
-                    typingTextElement.innerHTML = "";
-                    typeText();
-                }, 2000);
-            }
+      function typeText() {
+        if (charIndex < textArray[textIndex].length) {
+          typingTextElement.innerHTML = textArray[textIndex].substring(0, charIndex + 1) + '<span class="typing">|</span>';
+          charIndex++;
+          setTimeout(typeText, 100);
+        } else {
+          setTimeout(() => {
+            charIndex = 0;
+            textIndex = (textIndex + 1) % textArray.length;
+            typingTextElement.innerHTML = "";
+            typeText();
+          }, 2000);
         }
+      }
+      document.addEventListener("DOMContentLoaded", typeText);
 
-        document.addEventListener("DOMContentLoaded", typeText);
-
-        // Scroll Animation
+      // Scroll Animation using IntersectionObserver
+      document.addEventListener("DOMContentLoaded", function () {
         const fadeInElements = document.querySelectorAll(".fade-in");
-
-        function revealOnScroll() {
-            fadeInElements.forEach((element) => {
-                const position = element.getBoundingClientRect().top;
-                const screenHeight = window.innerHeight;
-                if (position < screenHeight - 50) {
-                    element.classList.add("visible");
-                }
-            });
-        }
-
-        window.addEventListener("scroll", revealOnScroll);
-        revealOnScroll();
-        document.addEventListener("DOMContentLoaded", function () {
-    const fadeInElements = document.querySelectorAll(".fade-in");
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
             if (entry.isIntersecting) {
-                entry.target.classList.add("visible");
+              entry.target.classList.add("visible");
             } else {
-                entry.target.classList.remove("visible"); // This ensures it happens every time
+              entry.target.classList.remove("visible");
             }
-        });
-    }, { threshold: 0.2 });
+          });
+        }, { threshold: 0.2 });
+        fadeInElements.forEach((el) => observer.observe(el));
+      });
 
-    fadeInElements.forEach((el) => observer.observe(el));
-});
+      // Modal Functionality
+      const modal = document.getElementById("contactModal");
+      const overlay = document.getElementById("modalOverlay");
+      const openBtn = document.getElementById("getInTouchBtn");
+      const closeBtn = document.getElementById("closeModalBtn");
+      const startConversationBtn = document.getElementById("startConversationBtn");
+      const modalError = document.getElementById("modalError");
 
-    const modal = document.getElementById("contactModal");
-    const overlay = document.getElementById("modalOverlay");
-    const openBtn = document.getElementById("getInTouchBtn");
-    const closeBtn = document.getElementById("closeModalBtn");
+      // For input fields inside the modal
+      const modalName = document.getElementById("modal-name");
+      const modalEmail = document.getElementById("modal-email");
+      const modalMessage = document.getElementById("modal-message");
 
-    // Disable scrolling when modal is open
-    function disableScroll() {
+      // Thank You Modal Functionality
+      const thankYouModal = document.getElementById("thankYouModal");
+      const thankYouModalContent = document.getElementById("thankYouModalContent");
+      const closeThankYouBtn = document.getElementById("closeThankYouBtn");
+
+      // Disable scrolling when modal is open
+      function disableScroll() {
         document.body.style.overflow = "hidden";
-    }
-
-    // Enable scrolling when modal is closed
-    function enableScroll() {
+      }
+      // Enable scrolling when modal is closed
+      function enableScroll() {
         document.body.style.overflow = "auto";
-    }
+      }
 
-    // Open Modal with Smooth Pop-up Effect
-    openBtn.addEventListener("click", () => {
+      // Open Contact Modal with Smooth Pop-up Effect
+      openBtn.addEventListener("click", () => {
         overlay.classList.remove("hidden");
         modal.classList.remove("hidden");
-
-        setTimeout(() => {
-            modal.children[0].classList.remove("scale-0");
-        }, 10); 
-
+        // Reset modal scale
+        modal.children[0].classList.remove("scale-0");
         disableScroll();
-    });
+      });
 
-    // Close Modal
-    closeBtn.addEventListener("click", () => {
+      // Close Contact Modal
+      closeBtn.addEventListener("click", () => {
         modal.children[0].classList.add("scale-0");
-
         setTimeout(() => {
+          overlay.classList.add("hidden");
+          modal.classList.add("hidden");
+          enableScroll();
+        }, 300);
+      });
+      // Close modal when clicking outside
+      overlay.addEventListener("click", () => closeBtn.click());
+
+      // Validate form on Start Conversation click
+      startConversationBtn.addEventListener("click", () => {
+        // Check if any field is empty
+        if (
+          modalName.value.trim() === "" ||
+          modalEmail.value.trim() === "" ||
+          modalMessage.value.trim() === ""
+        ) {
+          modalError.classList.remove("hidden");
+        } else {
+          modalError.classList.add("hidden");
+          // Proceed to Thank You Modal
+          // Close Contact Modal first
+          modal.children[0].classList.add("scale-0");
+          setTimeout(() => {
             overlay.classList.add("hidden");
             modal.classList.add("hidden");
+            // Open Thank You Modal
+            thankYouModal.classList.remove("hidden");
+            thankYouModalContent.classList.remove("scale-0");
+          }, 300);
+        }
+      });
+
+      // Hide error message when user starts typing
+      [modalName, modalEmail, modalMessage].forEach((input) => {
+        input.addEventListener("input", () => {
+          modalError.classList.add("hidden");
+        });
+      });
+
+      // Close Thank You Modal
+      if(closeThankYouBtn) {
+        closeThankYouBtn.addEventListener("click", () => {
+          thankYouModalContent.classList.add("scale-0");
+          setTimeout(() => {
+            thankYouModal.classList.add("hidden");
             enableScroll();
-        }, 300);
-    });
-
-    // Close when clicking outside modal
-    overlay.addEventListener("click", () => closeBtn.click());
-
+          }, 300);
+        });
+      }
     </script>
-</div>    
+
+    <!-- Thank You Modal -->
+    <div id="thankYouModal" class="fixed inset-0 flex items-center justify-center hidden z-50">
+      <div id="thankYouModalContent" class="bg-gray-900 p-8 rounded-lg shadow-lg w-[450px] h-auto relative transform scale-0 transition-transform duration-300">
+        <h2 class="text-3xl font-bold text-white text-center mb-4">Thank You for Contacting!</h2>
+        <p class="text-lg text-white mb-4">We will get back to you 😊</p>
+        <button id="closeThankYouBtn" class="bg-green-500 text-white px-5 py-3 rounded-md w-full">Close</button>
+      </div>
+    </div>
+
+  </div>
 </body>
 </html>
